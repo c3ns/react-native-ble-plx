@@ -29,6 +29,7 @@ public class ScanResultToJsObjectConverter extends JSObjectConverter<ScanResult>
         String SOLICITED_SERVICE_UUIDS = "solicitedServiceUUIDs";
         String IS_CONNECTABLE = "isConnectable";
         String OVERFLOW_SERVICE_UUIDS = "overflowServiceUUIDs";
+        String RAW_SCAN_RECORD = "rawScanRecord";
     }
 
     @Override
@@ -86,6 +87,10 @@ public class ScanResultToJsObjectConverter extends JSObjectConverter<ScanResult>
         } else {
             result.putNull(Metadata.SOLICITED_SERVICE_UUIDS);
         }
+
+        result.putString(Metadata.RAW_SCAN_RECORD,
+                advData.getRawScanRecord() != null ?
+                        Base64Converter.encode(advData.getRawScanRecord()) : null);
 
         // Attributes which are not accessible on Android
         result.putNull(Metadata.IS_CONNECTABLE);

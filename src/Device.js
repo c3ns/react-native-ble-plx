@@ -85,6 +85,11 @@ export class Device implements NativeDevice {
   overflowServiceUUIDs: ?Array<UUID>
 
   /**
+   * RAW scan record. [android only]
+   */
+  rawScanRecord: ?Base64
+
+  /**
    * Private constructor used to create {@link Device} object.
    *
    * @param {NativeDevice} nativeDevice Native device properties
